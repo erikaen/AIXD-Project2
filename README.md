@@ -47,13 +47,11 @@ Remember everytime when creating new version, Keep main stable
   git push
 
 ## Common branch naming
-
   - feature/live-chat — new functionality
   - fix/broken-images — bug fixes
   - experiment/new-layout — things you might throw away
 
 ## Quick tips
-
   - Commit often with clear messages — makes it easy to undo mistakes
   - Want to undo something? git log to find the commit, git revert <hash> to
   safely undo it
@@ -61,6 +59,25 @@ Remember everytime when creating new version, Keep main stable
   stash pop brings them back
   - Want a snapshot before a big change? git tag v1.0 marks a point you can
   always return to
+
+## The "Emergency" Recovery Plan
+If a revision breaks the app, I will follow these three levels of recovery based on the severity of the issue:
+
+### Level 1: The "Atomic" Rollback (Local, Uncommitted Mess)
+If Claude generates code that doesn't work but hasn't been committed yet:
+**Action:** git checkout -- . or git restore .
+**Why:** This instantly wipes the AI's recent changes and returns the files to the last clean "committed" state.
+AI Instruction: I will tell Claude: "That didn't work and broke the [Component]. I’ve restored the files; let's try a different approach focusing on [Specific Logic]."
+
+### Level 2: The "Time Machine" (Bad Commit)
+If the "bad" code was already committed to a feature branch:
+**Action:** git reset --hard HEAD~1
+**Why:** This deletes the most recent commit and moves the branch back one step in time as if the mistake never happened.
+
+### Level 3: The "Nuclear" Option (Branch Failure)
+If a feature branch becomes so messy or "hallucinated" that it’s unfixable:
+**Action:** git checkout main and git branch -D feature/broken-feature
+**Why:** Since main is always kept stable/deployable, I can safely delete the broken experiment and start a fresh feature branch from a clean slate.
 
 ## Claude Version 1 Resume Code
 claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
