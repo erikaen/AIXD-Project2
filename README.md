@@ -1,6 +1,6 @@
 # Bumble Pulse
 This vibe-coded project is made with V0 and Claude Code. UI revisions with [Impeccable]([URL](https://impeccable.style/#hero)).
-## Project Defiition
+## Project Definition
 ### Project Goals
 Launch a precise location-based notification system across all platforms (mobiles, desktop, and watch).
 Increase conversion rate of existing non-paying users to premium/premium+ subscribers by notifying them of matches based on precise location proximity (within 10 seconds). 
