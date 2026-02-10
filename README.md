@@ -29,7 +29,7 @@ A data-driven view for admins to analyze "Wave-to-Reveal" conversions and popula
 [Design Brief](https://docs.google.com/document/d/17l3uNp1pk-WWyF4nVS0_FfL2BygdXGM7LKkBcFYpLqY/edit?usp=sharing)
 
 # Important
-Remember everytime when creating new version, Keep main stable                                                              
+Remember everytime when creating new version, keep main stable                                                              
                                                                                 
   main should always be your working/deployable version.                        
                                                                                 
