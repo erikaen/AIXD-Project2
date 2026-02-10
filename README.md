@@ -2,7 +2,7 @@
 This vibe-coded project is made with V0 and Claude Code. UI revisions with [Impeccable](https://impeccable.style/#hero).
 ## Project Definition
 ### Project Description
-A proximity-based Bumble extension designed to bridge the gap between digital matching and real-world connection. It features 45-minute "Live Map" sessions with "Frosted" privacy controls, streamlined spot selection, and one-tap meeting coordination, all underpinned by a comprehensive safety monitoring and insights dashboard.
+A proximity-based Bumble extension designed to bridge the gap between digital matching and real-world connection. It features 45-minute "Live Map" sessions with "Frosted" privacy controls, streamlined spot selection, one-tap meeting coordination, and watch navigation, all underpinned by a comprehensive safety monitoring and insights dashboard.
 ### Core Features
 
 #### Hero Interface
