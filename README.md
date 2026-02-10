@@ -1,6 +1,6 @@
 # Bumble Pulse
 This vibe-coded project is made with V0 and Claude Code. UI revisions with [Impeccable](https://impeccable.style/#hero).
-## Why Claude Code?
+### Why Claude Code?
 Recreating a design system as specific as Bumble’s requires deep "visual" memory. Claude Code excels at following a strict tailwind.config.js to ensure the Yellow/Black palette is globally consistent. Since Bumble Pulse is implementing a complex 0.5km radius Map logic and Apple Watch sync, Claude Code can run local servers, identify why a map isn't rendering, and fix it without copy-pasting errors.
 
 ## Project Definition
