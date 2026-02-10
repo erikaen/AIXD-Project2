@@ -26,8 +26,7 @@ A dedicated safety dashboard for moderators to track active clusters, session du
 #### Reporting & Insights
 A data-driven view for admins to analyze "Wave-to-Reveal" conversions and popular venue heatmaps.
 
-### Project Design Brief
-[Bumble Pulse](https://docs.google.com/document/d/17l3uNp1pk-WWyF4nVS0_FfL2BygdXGM7LKkBcFYpLqY/edit?usp=sharing)
+[Design Brief](https://docs.google.com/document/d/17l3uNp1pk-WWyF4nVS0_FfL2BygdXGM7LKkBcFYpLqY/edit?usp=sharing)
 
 # Important
 Remember everytime when creating new version, Keep main stable                                                              
