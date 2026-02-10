@@ -112,5 +112,5 @@ Remember everytime when creating new version, Keep main stable
   - Want a snapshot before a big change? git tag v1.0 marks a point you can
   always return to
 
-## Claude Version 1 Resume Code: 
+## Claude Version 1 Resume Code
 claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
