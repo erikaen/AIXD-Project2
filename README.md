@@ -1,11 +1,12 @@
-/h1 Important /h1 Remember everytime when creating new version, Keep main stable                                                              
+# Important
+Remember everytime when creating new version, Keep main stable                                                              
                                                                                 
   main should always be your working/deployable version.                        
                                                                                 
   Use feature branches for new work                                             
 
   git checkout -b feature/new-feature    # create a branch
-  # ... make your changes ...
+  #... make your changes ...
   git add .
   git commit -m "add new feature"
   git push -u origin feature/new-feature
