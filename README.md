@@ -96,13 +96,13 @@ Remember everytime when creating new version, Keep main stable
   git merge feature/new-feature
   git push
 
-  Common branch naming
+## Common branch naming
 
   - feature/live-chat — new functionality
   - fix/broken-images — bug fixes
   - experiment/new-layout — things you might throw away
 
-  Quick tips
+## Quick tips
 
   - Commit often with clear messages — makes it easy to undo mistakes
   - Want to undo something? git log to find the commit, git revert <hash> to
@@ -112,4 +112,5 @@ Remember everytime when creating new version, Keep main stable
   - Want a snapshot before a big change? git tag v1.0 marks a point you can
   always return to
 
-Claude Version 1 Resume Code: claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
+## Claude Version 1 Resume Code: 
+claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
