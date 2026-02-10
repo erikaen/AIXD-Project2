@@ -1,5 +1,5 @@
 # Bumble Pulse
-This project is made with V0 and Claude Code. UI revisions with [Impeccable]([URL](https://impeccable.style/#hero)).
+This vibe-coded project is made with V0 and Claude Code. UI revisions with [Impeccable]([URL](https://impeccable.style/#hero)).
 ## Project Defiition
 ### Project Goals
 Launch a precise location-based notification system across all platforms (mobiles, desktop, and watch).
