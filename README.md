@@ -65,19 +65,19 @@ If a revision breaks the app, I will follow these three levels of recovery based
 
 ### Level 1: The "Atomic" Rollback (Local, Uncommitted Mess)
 If Claude generates code that doesn't work but hasn't been committed yet:
-**Action:** git checkout -- . or git restore .
-**Why:** This instantly wipes the AI's recent changes and returns the files to the last clean "committed" state.
+- **Action:** git checkout -- . or git restore .
+- **Why:** This instantly wipes the AI's recent changes and returns the files to the last clean "committed" state.
 AI Instruction: I will tell Claude: "That didn't work and broke the [Component]. I’ve restored the files; let's try a different approach focusing on [Specific Logic]."
 
 ### Level 2: The "Time Machine" (Bad Commit)
 If the "bad" code was already committed to a feature branch:
-**Action:** git reset --hard HEAD~1
-**Why:** This deletes the most recent commit and moves the branch back one step in time as if the mistake never happened.
+- **Action:** git reset --hard HEAD~1
+- **Why:** This deletes the most recent commit and moves the branch back one step in time as if the mistake never happened.
 
 ### Level 3: The "Nuclear" Option (Branch Failure)
 If a feature branch becomes so messy or "hallucinated" that it’s unfixable:
-**Action:** git checkout main and git branch -D feature/broken-feature
-**Why:** Since main is always kept stable/deployable, I can safely delete the broken experiment and start a fresh feature branch from a clean slate.
+- **Action:** git checkout main and git branch -D feature/broken-feature
+- **Why:** Since main is always kept stable/deployable, I can safely delete the broken experiment and start a fresh feature branch from a clean slate.
 
 ## Claude Version 1 Resume Code
 claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
