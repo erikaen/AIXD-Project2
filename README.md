@@ -20,12 +20,6 @@ A lead-driven invitation system for Bumble that streamlines real-world meetings 
 - **Apple Watch Navigation:**
 Sync with watch GPS to guide users to each other.
 
-- **Tutor Monitoring (Admin):**
-A dedicated safety dashboard for moderators to track active clusters, session durations, and safety "Check-ins."
-
-- **Reporting & Insights:**
-A data-driven view for admins to analyze "Wave-to-Reveal" conversions and popular venue heatmaps.
-
 [Design Brief](https://docs.google.com/document/d/17l3uNp1pk-WWyF4nVS0_FfL2BygdXGM7LKkBcFYpLqY/edit?usp=sharing)
 
 # Important
