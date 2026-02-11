@@ -5,7 +5,7 @@ Recreating a design system as specific as Bumble’s requires deep "visual" memo
 
 # Project Definition
 ## Project Description
-A proximity-based Bumble extension designed to bridge the gap between digital matching and real-world connection. It features 45-minute "Live Map" sessions with "Frosted" privacy controls, streamlined spot selection, one-tap meeting coordination, and watch navigation, all underpinned by a comprehensive safety monitoring and insights dashboard.
+A proximity-based Bumble extension designed to bridge the gap between digital matching and real-world connection. It features 45-minute "Live Map" sessions with "Frosted" privacy controls, streamlined spot selection, one-tap meeting coordination, and watch navigation.
 ## Core Features
 
 - **Hero Interface:**
