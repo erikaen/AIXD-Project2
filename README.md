@@ -75,11 +75,5 @@ If a feature branch becomes so messy or "hallucinated" that it’s unfixable:
 - **Action:** git checkout main and git branch -D feature/broken-feature
 - **Why:** Since main is always kept stable/deployable, I can safely delete the broken experiment and start a fresh feature branch from a clean slate.
 
-## Claude Session 1 Resume Code
-claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
-
-## Claude Session 2 Resume Code
-claude --resume af44eb13-ca16-4d68-8fda-db64eb753e72  
-
 ## Claude Resume Code
 claude --resume
