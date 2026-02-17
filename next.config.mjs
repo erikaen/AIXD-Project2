@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  basePath: '/AIXD-Project2',
   typescript: {
     ignoreBuildErrors: true,
   },
