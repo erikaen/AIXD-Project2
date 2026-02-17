@@ -77,3 +77,6 @@ If a feature branch becomes so messy or "hallucinated" that it’s unfixable:
 
 ## Claude Version 1 Resume Code
 claude --resume 59fd2d67-7d46-4ec7-ae64-846cf199dab9
+
+## Claude Resume Code
+claude --resume
