@@ -1,6 +1,6 @@
 "use client"
 
-import { HelpCircle, Settings, Star, CheckCircle, ChevronRight, Shield } from "lucide-react"
+import { HelpCircle, Settings, Star, CheckCircle, Shield, X, Share2 } from "lucide-react"
 
 const menuTabs = ["Pay plan", "Dating advice", "Photo insights", "Safety"]
 
@@ -15,11 +15,68 @@ const features = [
   { name: "Travel mode", premiumPlus: true, premium: false },
 ]
 
-export function ProfileTab({ onOpenAdmin }: { onOpenAdmin: () => void }) {
+export function ProfileTab({
+  onOpenAdmin,
+  pulseLocation,
+}: {
+  onOpenAdmin: () => void
+  pulseLocation?: string
+}) {
+  // Ellen's Pulse profile view
+  if (pulseLocation) {
+    return (
+      <div className="flex h-full flex-col bg-background">
+        {/* Header */}
+        <div className="flex items-center px-5 pt-14 pb-3 flex-shrink-0">
+          <button aria-label="Close">
+            <X className="h-6 w-6 text-foreground" />
+          </button>
+          <h2 className="flex-1 text-center text-base font-semibold text-foreground">Ellen, 22</h2>
+          <button aria-label="Share">
+            <Share2 className="h-5 w-5 text-muted-foreground" />
+          </button>
+        </div>
+
+        {/* Photo — takes most of space */}
+        <div className="relative flex-1 mx-4 rounded-2xl overflow-hidden">
+          <img
+            src="/AIXD-Project2/profiles/erika.jpg"
+            alt="Ellen"
+            className="h-full w-full object-cover object-top"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-4">
+            <div className="inline-flex items-center gap-1 rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium text-white mb-2">
+              <Shield className="h-3 w-3" />
+              Photo verified
+            </div>
+            <h3 className="text-2xl font-bold text-white">Ellen, 22</h3>
+          </div>
+        </div>
+
+        {/* Pulse context card */}
+        <div className="mx-4 my-3 rounded-2xl bg-secondary p-4 flex-shrink-0">
+          <p className="text-sm font-semibold text-foreground pb-2">You were in {pulseLocation}</p>
+          <div className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5">
+            <span className="text-sm">🎉</span>
+            <span className="text-sm font-medium text-foreground">At an event</span>
+          </div>
+        </div>
+
+        {/* Edit profile button */}
+        <div className="px-4 pb-10 flex-shrink-0">
+          <button className="w-full rounded-full bg-foreground py-4 text-sm font-bold text-background">
+            Edit profile
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // Default profile view
   return (
     <div className="pb-4">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-14 pb-4">
+      <div className="flex items-center justify-between px-5 pt-14 pb-3">
         <h1 className="text-3xl font-bold text-foreground">Profile</h1>
         <div className="flex items-center gap-3">
           <button className="p-1 text-foreground" aria-label="Help">
@@ -35,7 +92,7 @@ export function ProfileTab({ onOpenAdmin }: { onOpenAdmin: () => void }) {
       <div className="flex items-center gap-4 px-5 pb-5">
         <div className="relative">
           <div className="h-20 w-20 rounded-full overflow-hidden">
-            <img src="/profiles/erika.jpg" alt="Erika profile" className="h-full w-full object-cover" />
+            <img src="/AIXD-Project2/profiles/erika.jpg" alt="Erika profile" className="h-full w-full object-cover" />
           </div>
           <span className="absolute bottom-0 left-0 bg-foreground text-background text-[10px] font-bold px-1.5 py-0.5 rounded-full">
             22%
@@ -59,9 +116,7 @@ export function ProfileTab({ onOpenAdmin }: { onOpenAdmin: () => void }) {
           <button
             key={tab}
             className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-              i === 0
-                ? "bg-foreground text-background"
-                : "bg-secondary text-foreground"
+              i === 0 ? "bg-foreground text-background" : "bg-secondary text-foreground"
             }`}
           >
             {tab}
@@ -100,7 +155,7 @@ export function ProfileTab({ onOpenAdmin }: { onOpenAdmin: () => void }) {
           <p className="mb-5 text-sm text-foreground leading-relaxed">
             Get the VIP treatment, and enjoy better ways to connect with incredible people.
           </p>
-          <button className="w-full rounded-full bg-foreground py-3.5 text-center text-sm font-semibold text-background">
+          <button className="w-full rounded-full bg-foreground py-4 text-center text-sm font-semibold text-background">
             Explore Premium+
           </button>
         </div>

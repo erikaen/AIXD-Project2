@@ -1,41 +1,40 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import { Share2, Shield, Star, Heart, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { Share2, Shield, Star, Heart, X, RotateCcw } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { MeetCoordinator } from "./meet-coordinator"
 
-const profiles = [
-  {
-    name: "John",
-    age: 25,
-    verified: true,
-    bio: "Adventure seeker. Coffee enthusiast. Let's explore the city together!",
-    interests: ["Hiking", "Coffee", "Photography"],
-    img: "/profiles/john.jpg",
-  },
-  {
-    name: "Alex",
-    age: 23,
-    verified: true,
-    bio: "Music lover and amateur chef. Looking for someone to try new restaurants with.",
-    interests: ["Music", "Cooking", "Travel"],
-    img: "/profiles/alex.jpg",
-  },
-  {
-    name: "Sam",
-    age: 27,
-    verified: false,
-    bio: "Dog parent. Yoga instructor. Sunset chaser.",
-    interests: ["Yoga", "Dogs", "Nature"],
-    img: "/profiles/sam.jpg",
-  },
+type Profile = {
+  name: string
+  age: number
+  verified: boolean
+  school?: string
+  pulseContext?: { location: string; vibe: string; vibeIcon: string }
+  img: string
+}
+
+const baseProfiles: Profile[] = [
+  { name: "John", age: 25, verified: true, img: "/AIXD-Project2/profiles/john.jpg" },
+  { name: "Alex", age: 23, verified: true, img: "/AIXD-Project2/profiles/alex.jpg" },
+  { name: "Sam", age: 27, verified: false, img: "/AIXD-Project2/profiles/sam.jpg" },
 ]
 
-export function PeopleTab() {
+const daisyProfile: Profile = {
+  name: "Daisy",
+  age: 22,
+  verified: true,
+  school: "Carnegie Mellon University",
+  pulseContext: { location: "Chelsea", vibe: "At an event", vibeIcon: "🎉" },
+  img: "/AIXD-Project2/profiles/olivia.jpg",
+}
+
+export function PeopleTab({ pulseSessionActive }: { pulseSessionActive: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [showMeet, setShowMeet] = useState(false)
   const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(null)
+
+  const profiles = pulseSessionActive
+    ? [daisyProfile, ...baseProfiles]
+    : baseProfiles
 
   const profile = profiles[currentIndex % profiles.length]
 
@@ -47,96 +46,93 @@ export function PeopleTab() {
     }, 300)
   }, [])
 
-  if (showMeet) {
-    return <MeetCoordinator onBack={() => setShowMeet(false)} />
-  }
-
   return (
     <div className="flex h-full flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 pt-14 pb-2">
+      <div className="flex items-center justify-between px-5 pt-14 pb-2 flex-shrink-0">
         <h1 className="text-3xl font-extrabold text-foreground tracking-tight">Bumble</h1>
-        <button className="p-1 text-foreground" aria-label="Filters">
-          <div className="flex flex-col gap-1">
-            <div className="flex gap-1">
-              <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
-              <div className="h-1.5 w-6 rounded-full bg-foreground" />
-            </div>
-            <div className="flex gap-1">
-              <div className="h-1.5 w-6 rounded-full bg-foreground" />
-              <div className="h-1.5 w-1.5 rounded-full bg-foreground" />
-            </div>
-          </div>
-        </button>
-      </div>
-
-      {/* Premium Banner */}
-      <div className="mx-5 mb-3 flex items-center justify-between rounded-xl bg-secondary p-3">
-        <div>
-          <p className="text-sm font-semibold text-foreground">Match faster with 50% off Premium</p>
-          <p className="text-xs text-muted-foreground">Get all the perks to stand out and connect more.</p>
+        <div className="flex items-center gap-2">
+          <button className="p-1.5" aria-label="Undo">
+            <RotateCcw className="h-5 w-5 text-foreground" />
+          </button>
+          <button className="p-1.5" aria-label="Filters">
+            {/* Filter sliders icon */}
+            <svg className="h-5 w-5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <line x1="4" y1="6" x2="20" y2="6"/>
+              <line x1="4" y1="12" x2="20" y2="12"/>
+              <line x1="4" y1="18" x2="20" y2="18"/>
+              <circle cx="8" cy="6" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="10" cy="18" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+          </button>
         </div>
-        <button className="rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background whitespace-nowrap">
-          Get offer
-        </button>
       </div>
 
-      {/* Profile Card */}
-      <div className="flex-1 px-4 pb-4">
+      {/* Profile Card — takes most of the height */}
+      <div className="flex-1 px-4 min-h-0">
         <div
           className={cn(
-            "relative h-full rounded-3xl overflow-hidden transition-transform duration-300",
-            swipeDirection === "left" && "-translate-x-full rotate-[-10deg] opacity-0",
-            swipeDirection === "right" && "translate-x-full rotate-[10deg] opacity-0"
+            "relative h-full rounded-3xl overflow-hidden transition-all duration-300",
+            swipeDirection === "left" && "-translate-x-full rotate-[-8deg] opacity-0",
+            swipeDirection === "right" && "translate-x-full rotate-[8deg] opacity-0"
           )}
         >
           {/* Photo */}
           <div className="absolute inset-0">
-            <img src={profile.img || "/placeholder.svg"} alt={`${profile.name} profile`} className="h-full w-full object-cover" />
+            <img
+              src={profile.img}
+              alt={`${profile.name} profile`}
+              className="h-full w-full object-cover object-top"
+            />
           </div>
 
-          {/* Share */}
-          <button className="absolute top-4 right-4 p-2 rounded-full bg-foreground/20 backdrop-blur-sm" aria-label="Share profile">
-            <Share2 className="h-4 w-4 text-background" />
+          {/* Share button */}
+          <button
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/20 backdrop-blur-sm z-10"
+            aria-label="Share profile"
+          >
+            <Share2 className="h-4 w-4 text-white" />
           </button>
 
-          {/* Info overlay */}
-          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent p-6 pt-20">
+          {/* Bottom info overlay */}
+          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-16 pb-5 px-5">
             {profile.verified && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-foreground/30 backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium text-background mb-2">
+              <div className="inline-flex items-center gap-1 rounded-full bg-white/20 backdrop-blur-sm px-2.5 py-1 text-[10px] font-medium text-white mb-2">
                 <Shield className="h-3 w-3" />
                 Photo verified
-              </span>
+              </div>
             )}
-            <h2 className="text-3xl font-bold text-background">{profile.name}, {profile.age}</h2>
-            <p className="text-sm text-background/80 mt-1">{profile.bio}</p>
-            <div className="flex gap-2 mt-3">
-              {profile.interests.map((i) => (
-                <span key={i} className="rounded-full bg-background/20 backdrop-blur-sm px-3 py-1 text-xs text-background font-medium">
-                  {i}
-                </span>
-              ))}
-            </div>
+            <h2 className="text-3xl font-bold text-white">
+              {profile.name}, {profile.age}
+            </h2>
+            {profile.school && (
+              <p className="text-white/90 text-sm mt-1 flex items-center gap-1.5">
+                <svg className="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+                {profile.school}
+              </p>
+            )}
 
             {/* Action Buttons */}
-            <div className="flex items-center justify-center gap-5 mt-5">
+            <div className="flex items-center justify-center gap-4 mt-5">
               <button
                 onClick={() => handleSwipe("left")}
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-background/20 backdrop-blur-sm"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-background/90 shadow-lg"
                 aria-label="Pass"
               >
-                <X className="h-7 w-7 text-background" />
+                <X className="h-7 w-7 text-foreground" />
               </button>
               <button
                 onClick={() => handleSwipe("right")}
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--bumble-yellow)]"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--bumble-yellow)] shadow-lg"
                 aria-label="Like"
               >
                 <Heart className="h-7 w-7 text-foreground" />
               </button>
               <button
-                onClick={() => setShowMeet(true)}
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--bumble-yellow)]"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--bumble-yellow)] shadow-lg"
                 aria-label="SuperSwipe"
               >
                 <Star className="h-7 w-7 text-foreground" />
@@ -145,6 +141,21 @@ export function PeopleTab() {
           </div>
         </div>
       </div>
+
+      {/* Pulse context card — BELOW the photo card */}
+      {profile.pulseContext && (
+        <div className="px-4 pt-3 pb-2 flex-shrink-0">
+          <div className="rounded-2xl bg-secondary p-4">
+            <p className="text-sm font-semibold text-foreground pb-2">
+              You both were in {profile.pulseContext.location}. {profile.name} was
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full bg-background border border-border px-3 py-1.5">
+              <span className="text-sm">{profile.pulseContext.vibeIcon}</span>
+              <span className="text-sm font-medium text-foreground">{profile.pulseContext.vibe}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
